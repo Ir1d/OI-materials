@@ -150,7 +150,7 @@ int n,tee;
 int main(){
 	scanf("%d",&n);
 	f(i,0,n){
-		if (scanf("%d",&tee) == -1)tee = 0;//BZOJ 1588 Êý¾ÝÓÐBUG
+		if (scanf("%d",&tee) == -1)tee = 0;//BZOJ 1588 with BUGs on the data
 		S.insert(tee,tee);
 		S.solve(tee);
 		
