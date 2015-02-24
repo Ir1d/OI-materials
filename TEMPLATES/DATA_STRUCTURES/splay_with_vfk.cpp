@@ -1,3 +1,4 @@
+//on BZOJ 1588
 #include<cstdio>
 #include<cstring>
 #include<algorithm>
