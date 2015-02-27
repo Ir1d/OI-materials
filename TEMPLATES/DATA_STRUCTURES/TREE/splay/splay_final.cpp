@@ -19,7 +19,7 @@ inline int abs(int x){
 struct node{
 	int val,key;
 	int flip,s;
-	node *ch[2],*fa;
+	node *ch[2];
 	inline int cmp(int k)const {
 		int d = k - ch[0]->s;
 		if (d == 1)return -1;
@@ -80,11 +80,17 @@ void split(node* &o,int k,node* &left,node* &right){
 	left->maintain();
 }
 #define MAXN 100024
+node* root;
+int id = 0;
+node seq[MAXN];
+void insert(int v){
+	node *p = &seq[++id];
+	p->val = v;
+	splay(root,root->s);
+	root->ch[1] = p;
+}
 int v[MAXN];
 struct SplaySequence{
-	int id;
-	node seq[MAXN];
-	node* root;
 	node* build(int sz){
 		if(!sz)return null;
 		node* L = build(sz >> 1);
@@ -126,14 +132,14 @@ int main(){
 	while (m--){
 		scanf("%d%d",&a,&b);
 		node *left,*mid,*right,*o;
-		split(S.root,a,left,o);
+		split(root,a,left,o);
 		split(o,b - a + 1,mid,right);
 		mid->flip ^= 1;
-		S.root = merge(merge(left,mid),right);
+		root = merge(merge(left,mid),right);
 	}
 	
 	// printf("%d\n",ans);
-	print(S.root);
+	print(root);
 	
 	return 0;
 }
